@@ -96,7 +96,7 @@ if (seeMoreBtn) {
 }
 // ensure any additional booking buttons work: they point to booking.html
 // "Book Now" inside carousel and CTA button: handled by hrefs.
-// But we need to make sure the "Book Now" inside hero carousel buttons are dynamic but we keep static links pointing to #booking section.
+// But we need to make sure the "Book Now" inside hero carousel buttons are dynamic but we keep static links pointing to booking page.
 // For smooth demo, all "Book Now" buttons have href="#booking", the main CTA points to booking.html
 const mainBookBtn = document.getElementById("mainBookBtn");
 if (mainBookBtn) mainBookBtn.setAttribute("href", "booking.html");
@@ -104,7 +104,7 @@ if (mainBookBtn) mainBookBtn.setAttribute("href", "booking.html");
 const seeMoreBtns = document.querySelectorAll(".carousel-btn");
 seeMoreBtns.forEach((btn) => {
   if (btn.innerText.includes("See More"))
-    btn.setAttribute("href", "#about-tours");
+    btn.setAttribute("href", "about.html");
   if (btn.innerText.includes("Book Now"))
     btn.setAttribute("href", "booking.html");
 });
@@ -114,8 +114,8 @@ document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
     const targetId = this.getAttribute("href");
     if (
       targetId === "#" ||
-      targetId === "#about-tours" ||
-      targetId === "#booking"
+      targetId === "about.html" ||
+      targetId === "booking.html"
     ) {
       e.preventDefault();
       const targetEl = document.querySelector(targetId);
