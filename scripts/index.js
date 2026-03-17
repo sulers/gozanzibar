@@ -62,7 +62,7 @@ function startAutoSlide() {
   autoSlideInterval = setInterval(() => {
     currentIndex = (currentIndex + 1) % slides.length;
     updateCarousel();
-  }, 2000); // 2 seconds
+  }, 2500); // 2 seconds
 }
 
 function resetAutoSlide() {
