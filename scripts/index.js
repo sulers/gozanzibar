@@ -8,9 +8,13 @@ if (toggleBtn) {
 // ---------- Hero Carousel Data ----------
 const slides = [
   {
+    image: "./images/car.png",
+    title: "Car Rental and Pickup"
+  },
+  {
     image:
       "./images/beach.jpg",
-    title: "Stone Town Magic",
+    title: "Explore Stone Town Magic",
   },
   {
     image:
