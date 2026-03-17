@@ -26,26 +26,26 @@ const whatsappBtn = document.getElementById("whatsappBtn");
 whatsappBtn.addEventListener("click", (e) => {
   e.preventDefault();
   const message = buildMessage();
-  const url = `https://wa.me/255777987654?text=${message}`;
+  const url = `https://wa.me/255652017794?text=${message}`;
   window.open(url, "_blank");
 });
 
 // Email
-const emailBtn = document.getElementById("emailBtn");
-emailBtn.addEventListener("click", (e) => {
-  e.preventDefault();
-  const subject = "Tour Inquiry from GoZanzibar website";
-  const body = decodeURIComponent(buildMessage()); // readable in mail body
-  const mailtoUrl = `mailto:hello@gozanzibar.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
-  window.location.href = mailtoUrl;
-});
+// const emailBtn = document.getElementById("emailBtn");
+// emailBtn.addEventListener("click", (e) => {
+//   e.preventDefault();
+//   const subject = "Tour Inquiry from GoZanzibar website";
+//   const body = decodeURIComponent(buildMessage()); // readable in mail body
+//   const mailtoUrl = `mailto:hello@gozanzibar.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+//   window.location.href = mailtoUrl;
+// });
 
 // SMS
 const smsBtn = document.getElementById("smsBtn");
 smsBtn.addEventListener("click", (e) => {
   e.preventDefault();
   const body = decodeURIComponent(buildMessage());
-  const smsUrl = `sms:+255777987654?body=${encodeURIComponent(body)}`;
+  const smsUrl = `sms:+255652017794?body=${encodeURIComponent(body)}`;
   window.open(smsUrl, "_blank");
 });
 
