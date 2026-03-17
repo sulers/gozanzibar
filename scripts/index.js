@@ -9,17 +9,17 @@ if (toggleBtn) {
 const slides = [
   {
     image:
-      "https://images.unsplash.com/photo-1518544376170-2b5ef84e9b7c?ixlib=rb-4.0.3&auto=format&fit=crop&w=1350&q=80",
+      "./images/beach.jpg",
     title: "Stone Town Magic",
   },
   {
     image:
-      "https://images.unsplash.com/photo-1603190287605-e6c8e2d5c75f?ixlib=rb-4.0.3&auto=format&fit=crop&w=1350&q=80",
+      "./images/spice.jpg",
     title: "Spice Farms & Culture",
   },
   {
     image:
-      "https://images.unsplash.com/photo-1547634378-1b098db19c7c?ixlib=rb-4.0.3&auto=format&fit=crop&w=1350&q=80",
+      "./images/prison.jpg",
     title: "Prison Island Giants",
   },
 ];
@@ -95,7 +95,7 @@ createDots();
 updateCarousel();
 startAutoSlide();
 
-// ---------- Reviews Clickable Carousel (unchanged from original) ----------
+// Reviews Clickable Carousel
 const reviewTrack = document.getElementById("reviewTrack");
 const reviewCards = Array.from(document.querySelectorAll(".review-card"));
 const prevReviewBtn = document.getElementById("prevReview");
@@ -121,7 +121,7 @@ if (prevReviewBtn && nextReviewBtn) {
   });
 }
 
-// Make each review card clickable (redirect to Google reviews placeholder)
+// Make each review card clickable
 const googleReviewsUrl = "https://g.page/r/GoZanzibarReviewsPlaceholder";
 reviewCards.forEach((card) => {
   card.style.cursor = "pointer";
@@ -143,7 +143,7 @@ if (seeMoreBtn) {
 const heroSeeMore = document.querySelectorAll(".carousel-btn");
 heroSeeMore.forEach((btn) => {
   if (btn.innerText.includes("See More"))
-    btn.setAttribute("href", "#about-tours");
+    btn.setAttribute("href", "about.html");
   if (btn.innerText.includes("Book Now"))
     btn.setAttribute("href", "booking.html");
 });
