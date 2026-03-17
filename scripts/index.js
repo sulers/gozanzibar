@@ -8,23 +8,24 @@ if (toggleBtn) {
 // ---------- Hero Carousel Data ----------
 const slides = [
   {
+    image: "./images/ocean.webp",
+    title: "Walk the Pristine Shoreline",
+  },
+  {
     image: "./images/car.png",
-    title: "Car Rental and Pickup"
+    title: "Car Rental and Pickup",
   },
   {
-    image:
-      "./images/beach.jpg",
-    title: "Explore Stone Town Magic",
+    image: "./images/snorkeling.jpg",
+    title: "Explore Vibrant Underwater World",
   },
   {
-    image:
-      "./images/spice.jpg",
-    title: "Spice Farms & Culture",
+    image: "./images/seawalk.webp",
+    title: "Walk beneath the Sea",
   },
   {
-    image:
-      "./images/prison.jpg",
-    title: "Prison Island Giants",
+    image: "./images/horse.jpg",
+    title: "Ride Along Scenic Coastlines",
   },
 ];
 let currentIndex = 0;
