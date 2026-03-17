@@ -1,741 +1,255 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, viewport-fit=cover"
+    />
     <title>GoZanzibar | Authentic Tour Guide</title>
     <!-- Google Fonts + Font Awesome -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: 'Inter', sans-serif;
-            background-color: #FEF9EF;   /* warm sand background */
-            color: #1E2F3A;
-            line-height: 1.5;
-        }
-
-        /* container */
-        .container {
-            max-width: 1280px;
-            margin: 0 auto;
-            padding: 0 24px;
-        }
-
-        /* buttons */
-        .btn-primary {
-            display: inline-block;
-            background-color: #F26B4F;   /* coral */
-            color: white;
-            font-weight: 600;
-            padding: 12px 28px;
-            border-radius: 50px;
-            text-decoration: none;
-            transition: all 0.3s ease;
-            border: none;
-            cursor: pointer;
-            font-size: 1rem;
-            box-shadow: 0 2px 6px rgba(0,0,0,0.05);
-        }
-        .btn-primary:hover {
-            background-color: #e05538;
-            transform: translateY(-2px);
-            box-shadow: 0 8px 18px rgba(242,107,79,0.25);
-        }
-        .btn-outline {
-            display: inline-block;
-            background-color: transparent;
-            color: #F26B4F;
-            font-weight: 600;
-            padding: 10px 24px;
-            border-radius: 50px;
-            text-decoration: none;
-            border: 2px solid #F26B4F;
-            transition: 0.2s;
-        }
-        .btn-outline:hover {
-            background-color: #F26B4F;
-            color: white;
-        }
-        .btn-small {
-            padding: 8px 20px;
-            font-size: 0.9rem;
-        }
-
-        /* navigation */
-        header {
-            background-color: #FEF9EF;
-            padding: 16px 0;
-            position: sticky;
-            top: 0;
-            z-index: 100;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.02);
-            border-bottom: 1px solid rgba(242,107,79,0.1);
-        }
-        .nav-flex {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            flex-wrap: wrap;
-        }
-        .logo-area {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-        }
-        .logo-icon {
-            background-color: #F26B4F;
-            width: 44px;
-            height: 44px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.7rem;
-            color: white;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.05);
-        }
-        .logo-text h1 {
-            font-size: 1.7rem;
-            font-weight: 700;
-            color: #1E2F3A;
-            letter-spacing: -0.3px;
-        }
-        .logo-text span {
-            font-size: 0.7rem;
-            color: #F26B4F;
-            font-weight: 500;
-        }
-        .nav-links {
-            display: flex;
-            gap: 32px;
-            list-style: none;
-        }
-        .nav-links a {
-            text-decoration: none;
-            font-weight: 500;
-            color: #1E2F3A;
-            transition: 0.2s;
-            font-size: 1rem;
-        }
-        .nav-links a:hover {
-            color: #F26B4F;
-        }
-        .menu-toggle {
-            display: none;
-            font-size: 1.8rem;
-            cursor: pointer;
-            color: #1E2F3A;
-        }
-
-        /* main carousel */
-        .hero-carousel {
-            position: relative;
-            margin: 32px 0 20px;
-            border-radius: 32px;
-            overflow: hidden;
-            box-shadow: 0 12px 30px rgba(0,0,0,0.08);
-        }
-        .carousel-slide {
-            position: relative;
-            height: 480px;
-            background-size: cover;
-            background-position: center 35%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-            transition: background-image 0.4s ease;
-        }
-        .carousel-overlay {
-            background: linear-gradient(0deg, rgba(30,47,58,0.6), rgba(30,47,58,0.3));
-            width: 100%;
-            height: 100%;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            padding: 20px;
-        }
-        .carousel-title {
-            font-size: 2.8rem;
-            font-weight: 700;
-            color: white;
-            text-shadow: 0 2px 12px rgba(0,0,0,0.4);
-            margin-bottom: 20px;
-            max-width: 80%;
-        }
-        .carousel-buttons {
-            display: flex;
-            gap: 20px;
-            flex-wrap: wrap;
-            justify-content: center;
-        }
-        .carousel-btn {
-            background: white;
-            color: #1E2F3A;
-            padding: 12px 28px;
-            border-radius: 40px;
-            font-weight: 600;
-            text-decoration: none;
-            transition: 0.2s;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.2);
-        }
-        .carousel-btn.book {
-            background: #F26B4F;
-            color: white;
-        }
-        .carousel-btn:hover {
-            transform: scale(1.02);
-            background: #F26B4F;
-            color: white;
-        }
-        .carousel-btn.book:hover {
-            background: #e05538;
-        }
-        .carousel-nav {
-            position: absolute;
-            top: 50%;
-            transform: translateY(-50%);
-            background: rgba(255,255,255,0.7);
-            border-radius: 50%;
-            width: 44px;
-            height: 44px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
-            font-size: 1.5rem;
-            color: #1E2F3A;
-            transition: 0.2s;
-            z-index: 10;
-        }
-        .carousel-nav:hover {
-            background: white;
-        }
-        .prev { left: 20px; }
-        .next { right: 20px; }
-        .dots {
-            position: absolute;
-            bottom: 20px;
-            left: 0;
-            right: 0;
-            display: flex;
-            justify-content: center;
-            gap: 12px;
-        }
-        .dot {
-            width: 10px;
-            height: 10px;
-            background: rgba(255,255,255,0.6);
-            border-radius: 50%;
-            cursor: pointer;
-            transition: 0.2s;
-        }
-        .dot.active {
-            background: #F26B4F;
-            width: 26px;
-            border-radius: 20px;
-        }
-
-        /* section titles */
-        .section-title {
-            text-align: center;
-            font-size: 2.2rem;
-            margin: 64px 0 12px;
-            color: #1E2F3A;
-        }
-        .section-sub {
-            text-align: center;
-            color: #5F6C75;
-            margin-bottom: 40px;
-            font-size: 1.1rem;
-        }
-
-        /* services cards grid */
-        .services-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 30px;
-            margin: 20px 0 40px;
-        }
-        .service-card {
-            background: white;
-            border-radius: 28px;
-            padding: 28px 24px;
-            text-align: center;
-            box-shadow: 0 12px 22px rgba(0,0,0,0.04);
-            transition: all 0.25s ease;
-            border: 1px solid #FFE5D9;
-        }
-        .service-card:hover {
-            transform: translateY(-6px);
-            box-shadow: 0 20px 30px rgba(0,0,0,0.08);
-        }
-        .service-icon {
-            font-size: 2.8rem;
-            color: #F26B4F;
-            margin-bottom: 16px;
-        }
-        .service-card h3 {
-            font-size: 1.5rem;
-            margin-bottom: 12px;
-        }
-        .service-card p {
-            color: #3E5A6B;
-        }
-
-        /* clickable reviews carousel */
-        .reviews-section {
-            background: #FFF6ED;
-            border-radius: 48px;
-            padding: 32px 20px 48px;
-            margin: 60px 0;
-        }
-        .review-carousel-container {
-            position: relative;
-            max-width: 900px;
-            margin: 0 auto;
-            overflow: hidden;
-            border-radius: 32px;
-        }
-        .review-track {
-            display: flex;
-            transition: transform 0.4s ease-in-out;
-            cursor: pointer;
-        }
-        .review-card {
-            flex: 0 0 100%;
-            background: white;
-            border-radius: 32px;
-            padding: 32px 28px;
-            text-align: center;
-            box-shadow: 0 15px 25px rgba(0,0,0,0.05);
-            border: 1px solid #FADDCB;
-            transition: 0.2s;
-        }
-        .review-card:hover {
-            background: #fffbf5;
-            transform: scale(0.99);
-        }
-        .review-stars {
-            color: #FFB347;
-            margin-bottom: 16px;
-            font-size: 1.2rem;
-            letter-spacing: 2px;
-        }
-        .review-quote {
-            font-size: 1.2rem;
-            font-style: italic;
-            color: #1E2F3A;
-            margin: 20px 0;
-            line-height: 1.5;
-        }
-        .review-author {
-            font-weight: 700;
-            color: #F26B4F;
-            margin-top: 10px;
-        }
-        .carousel-arrows {
-            display: flex;
-            justify-content: center;
-            gap: 20px;
-            margin-top: 28px;
-        }
-        .arrow-review {
-            background: white;
-            border: 1px solid #F26B4F;
-            width: 44px;
-            height: 44px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
-            transition: 0.2s;
-            font-size: 1.2rem;
-            color: #F26B4F;
-        }
-        .arrow-review:hover {
-            background: #F26B4F;
-            color: white;
-        }
-        .see-more-btn {
-            text-align: center;
-            margin-top: 32px;
-        }
-
-        /* cta book now */
-        .cta-book {
-            background: linear-gradient(135deg, #F26B4F 0%, #E05A3E 100%);
-            border-radius: 48px;
-            padding: 48px 32px;
-            text-align: center;
-            margin: 50px 0 40px;
-            color: white;
-        }
-        .cta-book h3 {
-            font-size: 2rem;
-            margin-bottom: 12px;
-        }
-        .cta-book .btn-cta {
-            background: white;
-            color: #F26B4F;
-            margin-top: 20px;
-            padding: 14px 38px;
-            font-weight: 700;
-            display: inline-block;
-            border-radius: 50px;
-            text-decoration: none;
-            transition: 0.2s;
-        }
-        .cta-book .btn-cta:hover {
-            transform: scale(1.02);
-            box-shadow: 0 8px 20px rgba(0,0,0,0.2);
-            background: #fff5ef;
-        }
-
-        /* footer */
-        footer {
-            background-color: #1E2F3A;
-            color: #E9F0F3;
-            padding: 48px 0 24px;
-            margin-top: 50px;
-        }
-        .footer-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-            gap: 40px;
-            margin-bottom: 32px;
-        }
-        .footer-col h4 {
-            font-size: 1.2rem;
-            margin-bottom: 20px;
-            color: #F26B4F;
-        }
-        .footer-col p, .footer-col a {
-            color: #cfdfe6;
-            text-decoration: none;
-            line-height: 1.8;
-            display: block;
-        }
-        .footer-col a:hover {
-            color: #F26B4F;
-        }
-        .social-icons a {
-            display: inline-block;
-            margin-right: 16px;
-            font-size: 1.4rem;
-            color: #cfdfe6;
-        }
-        .social-icons a:hover {
-            color: #F26B4F;
-        }
-        .copyright {
-            text-align: center;
-            padding-top: 28px;
-            border-top: 1px solid rgba(255,255,255,0.1);
-            font-size: 0.85rem;
-        }
-
-        @media (max-width: 768px) {
-            .menu-toggle {
-                display: block;
-            }
-            .nav-links {
-                display: none;
-                width: 100%;
-                flex-direction: column;
-                background: #FEF9EF;
-                padding: 20px 0;
-                gap: 20px;
-                text-align: center;
-            }
-            .nav-links.active {
-                display: flex;
-            }
-            .carousel-slide {
-                height: 420px;
-            }
-            .carousel-title {
-                font-size: 1.8rem;
-                max-width: 90%;
-            }
-            .section-title {
-                font-size: 1.8rem;
-            }
-            .review-quote {
-                font-size: 1rem;
-            }
-        }
-    </style>
-</head>
-<body>
-
-<header>
-    <div class="container nav-flex">
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+    />
+    <link rel="stylesheet" href="styles/index.css" />
+  </head>
+  <body>
+    <header>
+      <div class="container nav-flex">
         <div class="logo-area">
-            <div class="logo-icon">
-                <i class="fas fa-sea-turtle"></i>
-            </div>
-            <div class="logo-text">
-                <h1>GoZanzibar</h1>
-                <span>authentic island guide</span>
-            </div>
+          <div class="logo-icon">
+            <i class="fas fa-sea-turtle"></i>
+          </div>
+          <div class="logo-text">
+            <h1>GoZanzibar</h1>
+            <span>authentic island guide</span>
+          </div>
         </div>
         <div class="menu-toggle" id="mobileToggle">
-            <i class="fas fa-bars"></i>
+          <i class="fas fa-bars"></i>
         </div>
         <ul class="nav-links" id="navMenu">
-            <li><a href="#">Home</a></li>
-            <li><a href="#about-tours">About & Tours</a></li>
-            <li><a href="#booking">Booking</a></li>
+          <li><a href="#">Home</a></li>
+          <li><a href="#about-tours">About & Tours</a></li>
+          <li><a href="#booking">Booking</a></li>
         </ul>
-    </div>
-</header>
+      </div>
+    </header>
 
-<main>
-    <div class="container">
+    <main>
+      <div class="container">
         <!-- Hero Carousel -->
         <div class="hero-carousel" id="heroCarousel">
-            <div class="carousel-slide" id="carouselSlide" style="background-image: url('https://images.unsplash.com/photo-1518544376170-2b5ef84e9b7c?ixlib=rb-4.0.3&auto=format&fit=crop&w=1350&q=80');">
-                <div class="carousel-overlay">
-                    <div class="carousel-title" id="carouselTitle">Stone Town Magic</div>
-                    <div class="carousel-buttons">
-                        <a href="#about-tours" class="carousel-btn">See More</a>
-                        <a href="#booking" class="carousel-btn book">Book Now</a>
-                    </div>
-                </div>
+          <div
+            class="carousel-slide"
+            id="carouselSlide"
+            style="
+              background-image: url(&quot;https://images.unsplash.com/photo-1518544376170-2b5ef84e9b7c?ixlib=rb-4.0.3&auto=format&fit=crop&w=1350&q=80&quot;);
+            "
+          >
+            <div class="carousel-overlay">
+              <div class="carousel-title" id="carouselTitle">
+                Stone Town Magic
+              </div>
+              <div class="carousel-buttons">
+                <a href="#about-tours" class="carousel-btn">See More</a>
+                <a href="#booking" class="carousel-btn book">Book Now</a>
+              </div>
             </div>
-            <div class="carousel-nav prev" id="prevSlide"><i class="fas fa-chevron-left"></i></div>
-            <div class="carousel-nav next" id="nextSlide"><i class="fas fa-chevron-right"></i></div>
-            <div class="dots" id="carouselDots"></div>
+          </div>
+          <div class="carousel-nav prev" id="prevSlide">
+            <i class="fas fa-chevron-left"></i>
+          </div>
+          <div class="carousel-nav next" id="nextSlide">
+            <i class="fas fa-chevron-right"></i>
+          </div>
+          <div class="dots" id="carouselDots"></div>
         </div>
 
         <!-- Services Cards (best services for a tour guide) -->
         <h2 class="section-title">Exclusive Services</h2>
-        <p class="section-sub">What makes your Zanzibar journey unforgettable</p>
+        <p class="section-sub">
+          What makes your Zanzibar journey unforgettable
+        </p>
         <div class="services-grid">
-            <div class="service-card">
-                <div class="service-icon"><i class="fas fa-user-tie"></i></div>
-                <h3>Expert Local Guides</h3>
-                <p>Fluent, passionate, and deeply connected — our guides share insider stories.</p>
-            </div>
-            <div class="service-card">
-                <div class="service-icon"><i class="fas fa-route"></i></div>
-                <h3>Custom Itineraries</h3>
-                <p>Tailor-made trips from spice farms to secret beaches, crafted just for you.</p>
-            </div>
-            <div class="service-card">
-                <div class="service-icon"><i class="fas fa-ship"></i></div>
-                <h3>Dhow Cruises & Snorkeling</h3>
-                <p>Sail turquoise waters, spot dolphins, and snorkel vibrant coral reefs.</p>
-            </div>
-            <div class="service-card">
-                <div class="service-icon"><i class="fas fa-leaf"></i></div>
-                <h3>Spice Farm Experiences</h3>
-                <p>Walk through aromatic plantations and taste tropical fruits.</p>
-            </div>
-            <div class="service-card">
-                <div class="service-icon"><i class="fas fa-landmark"></i></div>
-                <h3>Stone Town Heritage</h3>
-                <p>UNESCO world heritage tours full of history, architecture & culture.</p>
-            </div>
-            <div class="service-card">
-                <div class="service-icon"><i class="fas fa-car"></i></div>
-                <h3>Private Airport Transfers</h3>
-                <p>Stress-free arrival & departure with comfortable vehicles and meet & greet.</p>
-            </div>
+          <div class="service-card">
+            <div class="service-icon"><i class="fas fa-user-tie"></i></div>
+            <h3>Expert Local Guides</h3>
+            <p>
+              Fluent, passionate, and deeply connected — our guides share
+              insider stories.
+            </p>
+          </div>
+          <div class="service-card">
+            <div class="service-icon"><i class="fas fa-route"></i></div>
+            <h3>Custom Itineraries</h3>
+            <p>
+              Tailor-made trips from spice farms to secret beaches, crafted just
+              for you.
+            </p>
+          </div>
+          <div class="service-card">
+            <div class="service-icon"><i class="fas fa-ship"></i></div>
+            <h3>Dhow Cruises & Snorkeling</h3>
+            <p>
+              Sail turquoise waters, spot dolphins, and snorkel vibrant coral
+              reefs.
+            </p>
+          </div>
+          <div class="service-card">
+            <div class="service-icon"><i class="fas fa-leaf"></i></div>
+            <h3>Spice Farm Experiences</h3>
+            <p>Walk through aromatic plantations and taste tropical fruits.</p>
+          </div>
+          <div class="service-card">
+            <div class="service-icon"><i class="fas fa-landmark"></i></div>
+            <h3>Stone Town Heritage</h3>
+            <p>
+              UNESCO world heritage tours full of history, architecture &
+              culture.
+            </p>
+          </div>
+          <div class="service-card">
+            <div class="service-icon"><i class="fas fa-car"></i></div>
+            <h3>Private Airport Transfers</h3>
+            <p>
+              Stress-free arrival & departure with comfortable vehicles and meet
+              & greet.
+            </p>
+          </div>
         </div>
 
         <!-- Clickable Carousel of Reviews (Google Business) -->
         <div class="reviews-section" id="reviewsCarouselSection">
-            <h2 class="section-title" style="margin-top: 0;">Traveler's Voice</h2>
-            <p class="section-sub">What our guests say about GoZanzibar</p>
-            <div class="review-carousel-container">
-                <div class="review-track" id="reviewTrack">
-                    <!-- 3 review cards, each clickable (sends to google reviews) -->
-                    <div class="review-card" data-review-link="https://g.page/r/GoZanzibarReviewsPlaceholder">
-                        <div class="review-stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
-                        <div class="review-quote">“The most authentic tour experience in Zanzibar! Our guide knew hidden gems and made us feel like family. Absolutely unforgettable.”</div>
-                        <div class="review-author">— Sarah & Tom, UK</div>
-                    </div>
-                    <div class="review-card" data-review-link="https://g.page/r/GoZanzibarReviewsPlaceholder">
-                        <div class="review-stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
-                        <div class="review-quote">“Prison Island tortoises and Stone Town walk were highlights. Professional, warm and well-organized. Best decision ever!”</div>
-                        <div class="review-author">— Maria, Spain</div>
-                    </div>
-                    <div class="review-card" data-review-link="https://g.page/r/GoZanzibarReviewsPlaceholder">
-                        <div class="review-stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i></div>
-                        <div class="review-quote">“We did the spice tour + cooking class — so delicious! The team went above and beyond. Highly recommend GoZanzibar.”</div>
-                        <div class="review-author">— James & Amina, Canada</div>
-                    </div>
+          <h2 class="section-title" style="margin-top: 0">Traveler's Voice</h2>
+          <p class="section-sub">What our guests say about GoZanzibar</p>
+          <div class="review-carousel-container">
+            <div class="review-track" id="reviewTrack">
+              <!-- 3 review cards, each clickable (sends to google reviews) -->
+              <div
+                class="review-card"
+                data-review-link="https://g.page/r/GoZanzibarReviewsPlaceholder"
+              >
+                <div class="review-stars">
+                  <i class="fas fa-star"></i><i class="fas fa-star"></i
+                  ><i class="fas fa-star"></i><i class="fas fa-star"></i
+                  ><i class="fas fa-star"></i>
                 </div>
+                <div class="review-quote">
+                  “The most authentic tour experience in Zanzibar! Our guide
+                  knew hidden gems and made us feel like family. Absolutely
+                  unforgettable.”
+                </div>
+                <div class="review-author">— Sarah & Tom, UK</div>
+              </div>
+              <div
+                class="review-card"
+                data-review-link="https://g.page/r/GoZanzibarReviewsPlaceholder"
+              >
+                <div class="review-stars">
+                  <i class="fas fa-star"></i><i class="fas fa-star"></i
+                  ><i class="fas fa-star"></i><i class="fas fa-star"></i
+                  ><i class="fas fa-star"></i>
+                </div>
+                <div class="review-quote">
+                  “Prison Island tortoises and Stone Town walk were highlights.
+                  Professional, warm and well-organized. Best decision ever!”
+                </div>
+                <div class="review-author">— Maria, Spain</div>
+              </div>
+              <div
+                class="review-card"
+                data-review-link="https://g.page/r/GoZanzibarReviewsPlaceholder"
+              >
+                <div class="review-stars">
+                  <i class="fas fa-star"></i><i class="fas fa-star"></i
+                  ><i class="fas fa-star"></i><i class="fas fa-star"></i
+                  ><i class="fas fa-star-half-alt"></i>
+                </div>
+                <div class="review-quote">
+                  “We did the spice tour + cooking class — so delicious! The
+                  team went above and beyond. Highly recommend GoZanzibar.”
+                </div>
+                <div class="review-author">— James & Amina, Canada</div>
+              </div>
             </div>
-            <div class="carousel-arrows">
-                <div class="arrow-review" id="prevReview"><i class="fas fa-chevron-left"></i></div>
-                <div class="arrow-review" id="nextReview"><i class="fas fa-chevron-right"></i></div>
+          </div>
+          <div class="carousel-arrows">
+            <div class="arrow-review" id="prevReview">
+              <i class="fas fa-chevron-left"></i>
             </div>
-            <div class="see-more-btn">
-                <a href="https://g.page/r/GoZanzibarReviewsPlaceholder" target="_blank" class="btn-primary" id="seeMoreReviewsBtn">See More Reviews <i class="fab fa-google"></i></a>
+            <div class="arrow-review" id="nextReview">
+              <i class="fas fa-chevron-right"></i>
             </div>
+          </div>
+          <div class="see-more-btn">
+            <a
+              href="https://g.page/r/GoZanzibarReviewsPlaceholder"
+              target="_blank"
+              class="btn-primary"
+              id="seeMoreReviewsBtn"
+              >See More Reviews <i class="fab fa-google"></i
+            ></a>
+          </div>
         </div>
 
         <!-- Urging Book Now CTA -->
         <div class="cta-book" id="booking">
-            <h3>Ready to explore the Spice Island?</h3>
-            <p>Let’s create your dream itinerary — private, safe, and full of wonder.</p>
-            <a href="booking.html" class="btn-cta" id="mainBookBtn">Book Your Adventure Now →</a>
+          <h3>Ready to explore the Spice Island?</h3>
+          <p>
+            Let’s create your dream itinerary — private, safe, and full of
+            wonder.
+          </p>
+          <a href="booking.html" class="btn-cta" id="mainBookBtn"
+            >Book Your Adventure Now →</a
+          >
         </div>
-    </div>
-</main>
+      </div>
+    </main>
 
-<footer>
-    <div class="container">
+    <footer>
+      <div class="container">
         <div class="footer-grid">
-            <div class="footer-col">
-                <h4>GoZanzibar Tours</h4>
-                <p>Local expertise, island soul.<br>Discover Zanzibar with trusted guides.</p>
-                <div class="social-icons">
-                    <a href="#"><i class="fab fa-instagram"></i></a>
-                    <a href="#"><i class="fab fa-facebook-f"></i></a>
-                    <a href="#"><i class="fab fa-whatsapp"></i></a>
-                </div>
+          <div class="footer-col">
+            <h4>GoZanzibar Tours</h4>
+            <p>
+              Local expertise, island soul.<br />Discover Zanzibar with trusted
+              guides.
+            </p>
+            <div class="social-icons">
+              <a href="#"><i class="fab fa-instagram"></i></a>
+              <a href="#"><i class="fab fa-facebook-f"></i></a>
+              <a href="#"><i class="fab fa-whatsapp"></i></a>
             </div>
-            <div class="footer-col">
-                <h4>Quick Links</h4>
-                <a href="#">Home</a>
-                <a href="#about-tours">About & Tours</a>
-                <a href="#booking">Booking</a>
-                <a href="#">Travel Tips</a>
-            </div>
-            <div class="footer-col">
-                <h4>Contact</h4>
-                <p><i class="fas fa-phone-alt"></i> +255 777 987 654</p>
-                <p><i class="fas fa-envelope"></i> hello@gozanzibar.com</p>
-                <p><i class="fas fa-map-marker-alt"></i> Stone Town, Zanzibar, Tanzania</p>
-            </div>
+          </div>
+          <div class="footer-col">
+            <h4>Quick Links</h4>
+            <a href="#">Home</a>
+            <a href="#about-tours">About & Tours</a>
+            <a href="#booking">Booking</a>
+            <a href="#">Travel Tips</a>
+          </div>
+          <div class="footer-col">
+            <h4>Contact</h4>
+            <p><i class="fas fa-phone-alt"></i> +255 777 987 654</p>
+            <p><i class="fas fa-envelope"></i> hello@gozanzibar.com</p>
+            <p>
+              <i class="fas fa-map-marker-alt"></i> Stone Town, Zanzibar,
+              Tanzania
+            </p>
+          </div>
         </div>
         <div class="copyright">
-            <p>© 2025 GoZanzibar Tours | Authentic travel experiences</p>
+          <p>© 2025 GoZanzibar Tours | Authentic travel experiences</p>
         </div>
-    </div>
-</footer>
+      </div>
+    </footer>
 
-<script>
-    // ---------- Mobile Menu Toggle ----------
-    const toggleBtn = document.getElementById('mobileToggle');
-    const navMenu = document.getElementById('navMenu');
-    toggleBtn.addEventListener('click', () => {
-        navMenu.classList.toggle('active');
-    });
-
-    // ---------- Hero Carousel Data ----------
-    const slides = [
-        { image: "https://images.unsplash.com/photo-1518544376170-2b5ef84e9b7c?ixlib=rb-4.0.3&auto=format&fit=crop&w=1350&q=80", title: "Stone Town Magic" },
-        { image: "https://images.unsplash.com/photo-1603190287605-e6c8e2d5c75f?ixlib=rb-4.0.3&auto=format&fit=crop&w=1350&q=80", title: "Spice Farms & Culture" },
-        { image: "https://images.unsplash.com/photo-1547634378-1b098db19c7c?ixlib=rb-4.0.3&auto=format&fit=crop&w=1350&q=80", title: "Prison Island Giants" }
-    ];
-    let currentIndex = 0;
-    const slideElement = document.getElementById('carouselSlide');
-    const titleElement = document.getElementById('carouselTitle');
-    const dotsContainer = document.getElementById('carouselDots');
-    function updateCarousel() {
-        slideElement.style.backgroundImage = `url('${slides[currentIndex].image}')`;
-        titleElement.textContent = slides[currentIndex].title;
-        document.querySelectorAll('.dot').forEach((dot, idx) => {
-            dot.classList.toggle('active', idx === currentIndex);
-        });
-    }
-    function createDots() {
-        dotsContainer.innerHTML = '';
-        slides.forEach((_, idx) => {
-            const dot = document.createElement('div');
-            dot.classList.add('dot');
-            if (idx === currentIndex) dot.classList.add('active');
-            dot.addEventListener('click', () => {
-                currentIndex = idx;
-                updateCarousel();
-            });
-            dotsContainer.appendChild(dot);
-        });
-    }
-    document.getElementById('prevSlide').addEventListener('click', () => {
-        currentIndex = (currentIndex - 1 + slides.length) % slides.length;
-        updateCarousel();
-    });
-    document.getElementById('nextSlide').addEventListener('click', () => {
-        currentIndex = (currentIndex + 1) % slides.length;
-        updateCarousel();
-    });
-    createDots();
-    updateCarousel();
-
-    // ---------- Reviews Clickable Carousel (cards) ----------
-    const reviewTrack = document.getElementById('reviewTrack');
-    const reviewCards = Array.from(document.querySelectorAll('.review-card'));
-    const prevReviewBtn = document.getElementById('prevReview');
-    const nextReviewBtn = document.getElementById('nextReview');
-    let reviewIndex = 0;
-    const totalReviews = reviewCards.length;
-    function updateReviewCarousel() {
-        const offset = -reviewIndex * 100;
-        reviewTrack.style.transform = `translateX(${offset}%)`;
-    }
-    prevReviewBtn.addEventListener('click', () => {
-        reviewIndex = (reviewIndex - 1 + totalReviews) % totalReviews;
-        updateReviewCarousel();
-    });
-    nextReviewBtn.addEventListener('click', () => {
-        reviewIndex = (reviewIndex + 1) % totalReviews;
-        updateReviewCarousel();
-    });
-    // make each review card clickable (redirect to google reviews placeholder)
-    const googleReviewsUrl = "https://g.page/r/GoZanzibarReviewsPlaceholder";  // placeholder link
-    reviewCards.forEach(card => {
-        card.style.cursor = "pointer";
-        card.addEventListener('click', (e) => {
-            e.stopPropagation();
-            window.open(googleReviewsUrl, '_blank');
-        });
-    });
-    // Also the "See More Reviews" button uses same target
-    const seeMoreBtn = document.getElementById('seeMoreReviewsBtn');
-    if(seeMoreBtn) {
-        seeMoreBtn.addEventListener('click', (e) => {
-            e.preventDefault();
-            window.open(googleReviewsUrl, '_blank');
-        });
-    }
-    // ensure any additional booking buttons work: they point to booking.html
-    // "Book Now" inside carousel and CTA button: handled by hrefs. 
-    // But we need to make sure the "Book Now" inside hero carousel buttons are dynamic but we keep static links pointing to #booking section.
-    // For smooth demo, all "Book Now" buttons have href="#booking", the main CTA points to booking.html
-    const mainBookBtn = document.getElementById('mainBookBtn');
-    if(mainBookBtn) mainBookBtn.setAttribute('href', 'booking.html');
-    // For the carousel buttons:
-    const seeMoreBtns = document.querySelectorAll('.carousel-btn');
-    seeMoreBtns.forEach(btn => {
-        if(btn.innerText.includes('See More')) btn.setAttribute('href', '#about-tours');
-        if(btn.innerText.includes('Book Now')) btn.setAttribute('href', 'booking.html');
-    });
-    // optional: smooth scroll for anchor links
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-        anchor.addEventListener('click', function(e) {
-            const targetId = this.getAttribute('href');
-            if(targetId === "#" || targetId === "#about-tours" || targetId === "#booking") {
-                e.preventDefault();
-                const targetEl = document.querySelector(targetId);
-                if(targetEl) targetEl.scrollIntoView({ behavior: 'smooth' });
-            }
-        });
-    });
-</script>
-</body>
+    <script src="scripts/index.js"></script>
+  </body>
 </html>
