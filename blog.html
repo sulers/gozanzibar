@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Read our latest travel guides and stories about Zanzibar – from Stone Town secrets to spice tours and Prison Island.">
+    <title>GoZanzibar | Travel Blog</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #FEF9EF;
+            color: #1E2F3A;
+            line-height: 1.5;
+        }
+        .container {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+        .btn-primary {
+            display: inline-block;
+            background-color: #F26B4F;
+            color: white;
+            font-weight: 600;
+            padding: 12px 28px;
+            border-radius: 50px;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+        .btn-primary:hover {
+            background-color: #e05538;
+            transform: translateY(-2px);
+        }
+        header {
+            background-color: #FEF9EF;
+            padding: 16px 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.02);
+            border-bottom: 1px solid rgba(242,107,79,0.1);
+        }
+        .nav-flex {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+        .logo-area {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        .logo-icon {
+            background-color: #F26B4F;
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.7rem;
+            color: white;
+        }
+        .logo-text h1 {
+            font-size: 1.7rem;
+            font-weight: 700;
+            color: #1E2F3A;
+        }
+        .logo-text span {
+            font-size: 0.7rem;
+            color: #F26B4F;
+            font-weight: 500;
+        }
+        .nav-links {
+            display: flex;
+            gap: 32px;
+            list-style: none;
+        }
+        .nav-links a {
+            text-decoration: none;
+            font-weight: 500;
+            color: #1E2F3A;
+            transition: 0.2s;
+        }
+        .nav-links a:hover, .nav-links a.active {
+            color: #F26B4F;
+        }
+        .menu-toggle {
+            display: none;
+            font-size: 1.8rem;
+            cursor: pointer;
+            color: #1E2F3A;
+        }
+        .page-header {
+            text-align: center;
+            margin: 48px 0 32px;
+        }
+        .page-header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 12px;
+        }
+        .blogs-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+            gap: 32px;
+            margin: 40px 0 60px;
+        }
+        .blog-card {
+            background: white;
+            border-radius: 28px;
+            overflow: hidden;
+            box-shadow: 0 12px 22px rgba(0,0,0,0.04);
+            transition: transform 0.2s;
+        }
+        .blog-card:hover {
+            transform: translateY(-4px);
+        }
+        .blog-img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+        .blog-content {
+            padding: 24px;
+        }
+        .blog-date {
+            font-size: 0.8rem;
+            color: #F26B4F;
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+        .blog-title a {
+            font-size: 1.5rem;
+            color: #1E2F3A;
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+        .blog-title a:hover {
+            color: #F26B4F;
+        }
+        .blog-excerpt {
+            color: #3E5A6B;
+            margin: 12px 0 16px;
+        }
+        .read-more {
+            font-weight: 600;
+            color: #F26B4F;
+            text-decoration: none;
+        }
+        footer {
+            background-color: #1E2F3A;
+            color: #E9F0F3;
+            padding: 48px 0 24px;
+            margin-top: 20px;
+        }
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 40px;
+            margin-bottom: 32px;
+        }
+        .footer-col h4 {
+            font-size: 1.2rem;
+            margin-bottom: 20px;
+            color: #F26B4F;
+        }
+        .footer-col p, .footer-col a {
+            color: #cfdfe6;
+            text-decoration: none;
+            line-height: 1.8;
+            display: block;
+        }
+        .footer-col a:hover {
+            color: #F26B4F;
+        }
+        .social-icons a {
+            display: inline-block;
+            margin-right: 16px;
+            font-size: 1.4rem;
+            color: #cfdfe6;
+        }
+        .copyright {
+            text-align: center;
+            padding-top: 28px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            font-size: 0.85rem;
+        }
+        @media (max-width: 768px) {
+            .menu-toggle {
+                display: block;
+            }
+            .nav-links {
+                display: none;
+                width: 100%;
+                flex-direction: column;
+                background: #FEF9EF;
+                padding: 20px 0;
+                gap: 20px;
+                text-align: center;
+            }
+            .nav-links.active {
+                display: flex;
+            }
+        }
+    </style>
+</head>
+<body>
+<header>
+    <div class="container nav-flex">
+        <div class="logo-area">
+            <div class="logo-icon"><i class="fas fa-sea-turtle"></i></div>
+            <div class="logo-text"><h1>GoZanzibar</h1><span>authentic island guide</span></div>
+        </div>
+        <div class="menu-toggle" id="mobileToggle"><i class="fas fa-bars"></i></div>
+        <ul class="nav-links" id="navMenu">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about-tours.html">About & Tours</a></li>
+            <li><a href="booking.html">Booking</a></li>
+            <li><a href="blog.html" class="active">Blog</a></li>
+        </ul>
+    </div>
+</header>
+
+<main>
+    <div class="container">
+        <div class="page-header">
+            <h1>GoZanzibar Travel Journal</h1>
+            <p>Stories, guides, and insider tips from our team on the Spice Island.</p>
+        </div>
+
+        <div class="blogs-grid">
+            <!-- Article 1 -->
+            <div class="blog-card">
+                <img class="blog-img" src="./images/stone-town.jpeg" alt="Stone Town">
+                <div class="blog-content">
+                    <div class="blog-date"><i class="far fa-calendar-alt"></i> May 5, 2026</div>
+                    <h2 class="blog-title"><a href="article-stone-town.html">10 Secrets of Stone Town – A Local’s Guide</a></h2>
+                    <p class="blog-excerpt">Beyond the tourist path: hidden courtyards, the oldest spice shop, and the best rooftop for sunset views...</p>
+                    <a href="article-stone-town.html" class="read-more">Read full story →</a>
+                </div>
+            </div>
+
+            <!-- Article 2 -->
+            <div class="blog-card">
+                <img class="blog-img" src="./images/spice.jpg" alt="Spice tour">
+                <div class="blog-content">
+                    <div class="blog-date"><i class="far fa-calendar-alt"></i> April 28, 2026</div>
+                    <h2 class="blog-title"><a href="article-spice-tours.html">The Ultimate Zanzibar Spice Tour Experience</a></h2>
+                    <p class="blog-excerpt">From vanilla vines to cinnamon trees – why a spice farm visit should be on every traveller’s list...</p>
+                    <a href="article-spice-tours.html" class="read-more">Read full story →</a>
+                </div>
+            </div>
+
+            <!-- Article 3 -->
+            <div class="blog-card">
+                <img class="blog-img" src="./images/prison.jpg" alt="Prison Island tortoise">
+                <div class="blog-content">
+                    <div class="blog-date"><i class="far fa-calendar-alt"></i> April 20, 2026</div>
+                    <h2 class="blog-title"><a href="article-prison-island.html">Prison Island: Giants, History & Snorkeling</a></h2>
+                    <p class="blog-excerpt">A short boat ride from Stone Town takes you to a sanctuary of giant tortoises and a haunting past...</p>
+                    <a href="article-prison-island.html" class="read-more">Read full story →</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+
+<footer>
+    <div class="container">
+        <div class="footer-grid">
+            <div class="footer-col"><h4>GoZanzibar Tours</h4><p>Local expertise, island soul.<br>Discover Zanzibar with trusted guides.</p><div class="social-icons"><a href="#"><i class="fab fa-instagram"></i></a><a href="#"><i class="fab fa-facebook-f"></i></a><a href="#"><i class="fab fa-whatsapp"></i></a></div></div>
+            <div class="footer-col"><h4>Quick Links</h4><a href="index.html">Home</a><a href="about-tours.html">About & Tours</a><a href="booking.html">Booking</a><a href="blog.html">Blog</a></div>
+            <div class="footer-col"><h4>Contact</h4><p><i class="fas fa-phone-alt"></i> +255 777 987 654</p><p><i class="fas fa-envelope"></i> hello@gozanzibar.com</p><p><i class="fas fa-map-marker-alt"></i> Stone Town, Zanzibar</p></div>
+        </div>
+        <div class="copyright"><p>© 2026 GoZanzibar Tours | Authentic travel experiences</p></div>
+    </div>
+</footer>
+<script>
+    const toggleBtn = document.getElementById('mobileToggle');
+    const navMenu = document.getElementById('navMenu');
+    toggleBtn.addEventListener('click', () => navMenu.classList.toggle('active'));
+</script>
+</body>
+</html>
